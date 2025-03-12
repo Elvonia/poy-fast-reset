@@ -1,16 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 
 using PeterO.Cbor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
-using Cfg = FastReset.Config.Cfg;
-using Cache = FastReset.Cache;
 
 namespace FastReset.Saves {
     /**

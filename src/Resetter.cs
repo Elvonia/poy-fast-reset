@@ -1,5 +1,3 @@
-using UnityEngine;
-
 using StateManager = FastReset.State.StateManager;
 using WindResetter = FastReset.Patches.WindResetter;
 

@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 
 using BepInEx;
-using PeterO.Cbor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

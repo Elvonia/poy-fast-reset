@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-
-using BepInEx.Configuration;
 using UnityEngine;
 
 using SaveManager = FastReset.Saves.SaveManager;

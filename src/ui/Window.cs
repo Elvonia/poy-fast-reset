@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using UnityEngine;
 
@@ -20,6 +19,10 @@ namespace FastReset.UI {
         }
 
         private State state { get; } = new State();
+
+        private Rect uiRect;
+        private bool isDragging;
+        private Vector2 dragOffset;
 
         private const float height = 300;
         private const float width = 386;
@@ -277,13 +280,37 @@ namespace FastReset.UI {
                 return;
             }
 
-            int centerX = Screen.width / 2;
-            int centerY = Screen.height / 2;
+            Event e = Event.current;
 
-            float x = centerX - width / 2;
-            float y = centerY - height / 2;
+            if (uiRect.width == 0 || uiRect.height == 0)
+            {
+                int centerX = Screen.width / 2;
+                int centerY = Screen.height / 2;
 
-            GUILayout.BeginArea(new Rect(x, y, width, height), GUI.skin.box);
+                float x = centerX - width / 2;
+                float y = centerY - height / 2;
+
+                uiRect = new Rect(x, y, width, height);
+            }
+
+            if (e.type == EventType.MouseDown && uiRect.Contains(e.mousePosition))
+                {
+                    isDragging = true;
+                    dragOffset = e.mousePosition - new Vector2(uiRect.x, uiRect.y);
+                }
+
+            if (e.type == EventType.MouseUp)
+            {
+                isDragging = false;
+            }
+
+            if (isDragging && e.type == EventType.MouseDrag)
+            {
+                uiRect.position = e.mousePosition - dragOffset;
+                e.Use();
+            }
+
+            GUILayout.BeginArea(uiRect, GUI.skin.box);
 
 
             GUILayout.BeginHorizontal();

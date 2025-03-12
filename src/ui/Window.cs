@@ -294,10 +294,10 @@ namespace FastReset.UI {
             }
 
             if (e.type == EventType.MouseDown && uiRect.Contains(e.mousePosition))
-                {
+            {
                     isDragging = true;
                     dragOffset = e.mousePosition - new Vector2(uiRect.x, uiRect.y);
-                }
+            }
 
             if (e.type == EventType.MouseUp)
             {
